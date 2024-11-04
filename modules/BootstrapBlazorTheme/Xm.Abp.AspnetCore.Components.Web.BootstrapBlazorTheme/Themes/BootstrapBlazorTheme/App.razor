@@ -1,12 +1,13 @@
 ﻿@using Microsoft.Extensions.Options
 @using Xm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Routing
 @inject IOptions<AbpRouterOptions> RouterOptions
+
 <BootstrapBlazorRoot>
     <CascadingAuthenticationState>
         <Router AppAssembly="RouterOptions.Value.AppAssembly"
                 AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies">
             <Found Context="routeData">
-                @if (routeData.PageType.ToString().Contains("NoneLayout"))
+                @if (routeData.PageType.ToString().Contains("NoneLayout") || NoneLayout)
                 {
                     <RouteView RouteData="@routeData" />
                 }
@@ -33,3 +34,38 @@
         </Router>
     </CascadingAuthenticationState>
 </BootstrapBlazorRoot>
+
+@code
+{
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    private bool NoneLayout;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var queryString = new Uri(NavigationManager.Uri).Query;
+        // 如果查询字符串不为空，则解析它
+        if (!string.IsNullOrEmpty(queryString))
+        {
+            // 移除开头的 '?' 字符
+            if (queryString.StartsWith("?"))
+            {
+                queryString = queryString.Substring(1);
+            }
+
+            // 使用字典或自定义方法来解析键值对
+            var queryParameters = queryString.Split('&')
+                .Select(q => q.Split('='))
+                .ToDictionary(q => q[0], q => Uri.UnescapeDataString(q.Length > 1 ? q[1] : string.Empty));
+
+            // 从字典中获取 userName 参数
+            if (queryParameters.ContainsKey("layout"))
+            {
+                NoneLayout = queryParameters["layout"] == "none";
+            }
+        }
+        await base.OnInitializedAsync();
+
+    }
+}
