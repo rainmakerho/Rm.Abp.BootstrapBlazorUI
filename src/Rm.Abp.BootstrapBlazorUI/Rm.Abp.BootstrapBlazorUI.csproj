@@ -2,14 +2,14 @@
   <Import Project="..\..\common.props" />
   <Import Project="..\..\configureawait.props" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BootstrapBlazor" Version="8.8.0" />
-    <PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.0.5" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Components.Web" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="8.2.1" />
+    <PackageReference Include="BootstrapBlazor" Version="9.*" />
+    <PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.0.*" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Web" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(Version)" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Components\ObjectExtending\ExtensionProperties.razor" />
@@ -17,7 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
-    <PackageReference Update="Fody" Version="6.8.1">
+    <PackageReference Update="Fody" Version="$(FodyVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

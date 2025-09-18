@@ -1,7 +1,9 @@
 ﻿<Project>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>8.2.1.0</Version>
+    <Version>9.3.2</Version>
+    <MSVersion>9.0.5</MSVersion>
+    <FodyVersion>6.9.2</FodyVersion>
     <!--TODO  <PackageIconUrl></PackageIconUrl> -->
     <PackageProjectUrl>https://github.com/rainmakerho/Rm.Abp.BootstrapBlazorUI</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

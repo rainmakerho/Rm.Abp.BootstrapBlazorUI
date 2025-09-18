@@ -2,20 +2,20 @@
   <Import Project="..\..\..\common.props" />
   <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Components.Server" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Bundling" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Packages" Version="8.2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.7" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Server" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Bundling" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Packages" Version="$(Version)" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="$(MSVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme\Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
-    <PackageReference Update="Fody" Version="6.8.1">
+    <PackageReference Update="Fody" Version="$(FodyVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

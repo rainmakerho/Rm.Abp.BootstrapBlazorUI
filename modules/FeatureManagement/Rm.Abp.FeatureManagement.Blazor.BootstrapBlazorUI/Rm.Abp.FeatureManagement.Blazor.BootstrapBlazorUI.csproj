@@ -2,19 +2,19 @@
   <Import Project="..\..\..\common.props" />
   <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.Features" Version="8.2.1" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="8.2.1" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.Features" Version="$(Version)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="$(Version)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\BootstrapBlazorTheme\Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme\Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
-    <PackageReference Update="Fody" Version="6.8.1">
+    <PackageReference Update="Fody" Version="$(FodyVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
