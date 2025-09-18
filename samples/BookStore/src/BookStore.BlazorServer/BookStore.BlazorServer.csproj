@@ -13,12 +13,12 @@
 		<PackageReference Include="Serilog.Sinks.Async" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\modules\Account\Xm.Abp.Account.Web.IdentityServer\Xm.Abp.Account.Web.IdentityServer.csproj" />
-		<ProjectReference Include="..\..\..\..\modules\BasicTheme\Xm.Abp.AspNetCore.Mvc.UI.Theme.Basic\Xm.Abp.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
-		<ProjectReference Include="..\..\..\..\modules\IdentityManagement\Xm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI\Xm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
-		<ProjectReference Include="..\..\..\..\modules\BootstrapBlazorTheme\Xm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme\Xm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.csproj" />
-		<ProjectReference Include="..\..\..\..\modules\SettingManagement\Xm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI\Xm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
-		<ProjectReference Include="..\..\..\..\modules\TenantManagement\Xm.Abp.TenantManagement.Blazor.Server.BootstrapBlazorUI\Xm.Abp.TenantManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\Account\Rm.Abp.Account.Web.IdentityServer\Rm.Abp.Account.Web.IdentityServer.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\BasicTheme\Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic\Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\IdentityManagement\Rm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI\Rm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\BootstrapBlazorTheme\Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme\Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\SettingManagement\Rm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI\Rm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
+		<ProjectReference Include="..\..\..\..\modules\TenantManagement\Rm.Abp.TenantManagement.Blazor.Server.BootstrapBlazorUI\Rm.Abp.TenantManagement.Blazor.Server.BootstrapBlazorUI.csproj" />
 		<ProjectReference Include="..\..\src\BookStore.Application\BookStore.Application.csproj" />
 		<ProjectReference Include="..\..\src\BookStore.HttpApi\BookStore.HttpApi.csproj" />
 		<ProjectReference Include="..\..\src\BookStore.EntityFrameworkCore\BookStore.EntityFrameworkCore.csproj" />

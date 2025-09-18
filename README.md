@@ -1,4 +1,4 @@
-﻿# Xm.Abp.BootstrapBlazorUI
+﻿# Rm.Abp.BootstrapBlazorUI
 
 **An Abp Blazor Theme based [BootstrapBlazor](https://www.blazor.zone/) !**
 
@@ -39,9 +39,9 @@ The first step is to use ABP CLI to create a new project.
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xm.Abp.IdentityManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
-    <PackageReference Include="Xm.Abp.SettingManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
-    <PackageReference Include="Xm.Abp.TenantManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
+    <PackageReference Include="Rm.Abp.IdentityManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
+    <PackageReference Include="Rm.Abp.SettingManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
+    <PackageReference Include="Rm.Abp.TenantManagement.Blazor.WebAssembly.BootstrapBlazorUI" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,9 +56,9 @@ The first step is to use ABP CLI to create a new project.
 
 ```csharp
 @using BootstrapBlazor
-@using Xm.Abp.BootstrapBlazorUI
-@using Xm.Abp.BootstrapBlazorUI.Components
-@using Xm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Layout
+@using Rm.Abp.BootstrapBlazorUI
+@using Rm.Abp.BootstrapBlazorUI.Components
+@using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Layout
 ```
 
 **Open `BookStoreBlazorModule` make the following changes:**
