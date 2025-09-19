@@ -21,6 +21,7 @@ using OpenIddict.Validation.AspNetCore;
 using Rm.Abp.Account.Web;
 using Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.Bundling;
 using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Routing;
+using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme;
 using Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Rm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI;
@@ -82,7 +83,8 @@ namespace Acme.BookStore.Blazor;
      typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpIdentityBlazorServerBootstrapBlazorModule),
     typeof(AbpTenantManagementBlazorServerBootstrapBlazorModule),
-    typeof(AbpSettingManagementBlazorServerBootstrapBlazorModule)
+    typeof(AbpSettingManagementBlazorServerBootstrapBlazorModule),
+    typeof(AbpAspNetCoreMvcUiBasicThemeModule)
    )]
 public class BookStoreBlazorModule : AbpModule
 {
@@ -378,7 +380,7 @@ public class BookStoreBlazorModule : AbpModule
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints(builder =>
         {
-            builder.MapRazorComponents<App>()
+            builder.MapRazorComponents<Components.App>()
                 .AddInteractiveServerRenderMode()
                 .AddAdditionalAssemblies(builder.ServiceProvider.GetRequiredService<IOptions<AbpRouterOptions>>().Value.AdditionalAssemblies.ToArray());
         });

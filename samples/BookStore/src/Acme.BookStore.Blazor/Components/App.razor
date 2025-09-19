@@ -1,42 +1,32 @@
-﻿@using System.Globalization
-@using Microsoft.Extensions.Hosting
-@* @using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme.Bundling *@
-
-@using Volo.Abp.Localization
-@* @using Volo.Abp.AspNetCore.Components.Web.Theming.Bundling *@
+﻿@using Microsoft.Extensions.Hosting
 @using Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.Bundling
 @using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme
-
 @inject IHostEnvironment Env
+@inject IStringLocalizer<App> Localizer
 
 <!DOCTYPE html>
-<html lang="@CultureInfo.CurrentCulture.Name" data-bs-theme='light'>
+<html lang="en" data-bs-theme='light'>
+
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookStore</title>
     <base href="/" />
-
     <AbpStyles BundleName="@BlazorBootstrapBlazorThemeBundles.Styles.Global" />
-@*     <link href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css" rel="stylesheet"> *@
-    <link href="Acme.BookStore.Blazor.styles.css" rel="stylesheet"/>
     <ImportMap />
+    <link href="Acme.BookStore.Blazor.styles.css" rel="stylesheet" />
+
     <HeadOutlet @rendermode="InteractiveServer" />
 
-    
 </head>
-<body>
 
+<body>
     <Routes @rendermode="InteractiveServer" />
 
     <ReconnectorOutlet ReconnectInterval="5000" @rendermode="new InteractiveServerRenderMode(false)" />
-
-
-    
     <AbpScripts BundleName="@BlazorBootstrapBlazorThemeBundles.Scripts.Global" />
-    @* <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script> *@
-    <script src="_framework/blazor.web.js"></script>
-
 </body>
+
 </html>

@@ -35,11 +35,10 @@ public partial class DefaultLayout
 
     private List<MenuItem>? Menus { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-        //await GetMenuAsync();
-        Menus = GetIconSideMenuItems();
+        await GetMenuAsync();
+        //Menus = GetIconSideMenuItems();
     }
 
     private static List<MenuItem> GetIconSideMenuItems()

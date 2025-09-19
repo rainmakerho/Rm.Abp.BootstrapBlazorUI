@@ -13,7 +13,7 @@
     var items = Languages.Select(language => new SelectedItem { Text = language.DisplayName, Value = language.CultureName });
     
     <div class="d-flex align-items-center">
-        <Dropdown TValue="string" Value="@_selectedCulture" Items="@items" OnSelectedItemChanged="@ChangeLanguage" Color="Color.Secondary"></Dropdown>
+        <Dropdown TValue="string" Value="@_selectedCulture" Items="@items" OnSelectedItemChanged="@ChangeLanguage" ></Dropdown>
     </div>
 }
 
