@@ -3,15 +3,16 @@
 @using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme
 @* @using Volo.Abp.AspNetCore.Components.Web.Theming.Routing *@
 @using Microsoft.Extensions.Options
+@using Acme.BookStore.Blazor.Components.Layout
+
 @inject IOptions<AbpRouterOptions> RouterOptions
-<BootstrapBlazorRoot>
+
 <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies">
     <Found Context="routeData">
-        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(DefaultLayout)">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)">
             <NotAuthorized>
                 <RedirectToLogin />
             </NotAuthorized>
         </AuthorizeRouteView>
     </Found>
 </Router>
-</BootstrapBlazorRoot>

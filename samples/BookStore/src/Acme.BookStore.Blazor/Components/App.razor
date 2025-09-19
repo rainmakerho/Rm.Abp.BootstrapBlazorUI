@@ -8,12 +8,9 @@
 @using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme
 
 @inject IHostEnvironment Env
-@{
-    var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
-}
 
 <!DOCTYPE html>
-<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
+<html lang="@CultureInfo.CurrentCulture.Name" data-bs-theme='light'>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,28 +21,18 @@
 @*     <link href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css" rel="stylesheet"> *@
     <link href="Acme.BookStore.Blazor.styles.css" rel="stylesheet"/>
-
+    <ImportMap />
     <HeadOutlet @rendermode="InteractiveServer" />
 
     
 </head>
-<body class="abp-application-layout @rtl">
-    <h1>hi rm</h1>
+<body>
 
     <Routes @rendermode="InteractiveServer" />
 
-    <div id="blazor-error-ui">
-        @if (Env.IsDevelopment())
-        {
-            <text>An unhandled exception has occurred. See browser dev tools for details.</text>
-        }
-        else if (Env.IsStaging() || Env.IsProduction())
-        {
-            <text>An error has occurred. This application may no longer respond until reloaded.</text>
-        }
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
+    <ReconnectorOutlet ReconnectInterval="5000" @rendermode="new InteractiveServerRenderMode(false)" />
+
+
     
     <AbpScripts BundleName="@BlazorBootstrapBlazorThemeBundles.Scripts.Global" />
     @* <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script> *@

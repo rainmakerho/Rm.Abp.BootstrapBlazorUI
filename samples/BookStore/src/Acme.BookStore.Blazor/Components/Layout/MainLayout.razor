@@ -1,13 +1,5 @@
-﻿@using Microsoft.Extensions.Logging
-@using Microsoft.Extensions.Options
-@using System.Reflection
-@using System.Diagnostics.CodeAnalysis
-@using Volo.Abp
-@using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Routing
-@using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Settings
-@inherits LayoutComponentBase
-@inject IOptions<AbpRouterOptions> RouterOptions
-@inject SwalService SwalService
+﻿@inherits LayoutComponentBase
+
 <BootstrapBlazorRoot>
     <Layout ShowGotoTop="true" ShowCollapseBar="true" ShowFooter="@ShowFooter" SideWidth="0"
             IsPage="true" IsFullSide="@IsFullSide" IsFixedHeader="@IsFixedHeader" IsFixedFooter="@IsFixedFooter"
@@ -15,7 +7,7 @@
             TabStyle="TabStyle.Chrome" ShowToolbar="true" ShowTabContextMenu="true"
             ShowTabInHeader="@ShowTabInHeader" ShowTabExtendButtons="false"
             TabDefaultUrl="/" UseTabSet="@UseTabSet" IsFixedTabHeader="IsFixedTabHeader"
-        AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies.Select(p=>p.As<Assembly>()).Union(new List<Assembly>{RouterOptions.Value.AppAssembly})"
+            AdditionalAssemblies="new[] { GetType().Assembly }"
             Menus="@Menus" class="@Theme">
         <Header>
             @if (ShowTabInHeader == false)

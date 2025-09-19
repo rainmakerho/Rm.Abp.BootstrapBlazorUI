@@ -9,5 +9,6 @@ public class BlazorGlobalStyleContributor : BundleContributor
     {
         context.Files.AddIfNotContains("/_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css");
         context.Files.AddIfNotContains("/_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css");
+        context.Files.AddIfNotContains("/_content/BootstrapBlazor/css/motronic.min.css");
     }
 }

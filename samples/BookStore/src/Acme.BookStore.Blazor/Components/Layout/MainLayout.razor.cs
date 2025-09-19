@@ -1,20 +1,12 @@
 ﻿using BootstrapBlazor.Components;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
-using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Settings;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Volo.Abp.UI.Navigation;
 
-namespace Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme;
+namespace Acme.BookStore.Blazor.Components.Layout;
 
-public partial class DefaultLayout
+public sealed partial class MainLayout
 {
-    [Inject] protected IBootstrapBlazorSettingsProvider BootstrapBlazorSettingsProvider { get; set; }
-
-    [Inject] protected IMenuManager MenuManager { get; set; }
-
     private bool UseTabSet { get; set; } = true;
 
     private string Theme { get; set; } = "";
@@ -35,10 +27,13 @@ public partial class DefaultLayout
 
     private List<MenuItem>? Menus { get; set; }
 
+    /// <summary>
+    /// OnInitialized 方法
+    /// </summary>
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        //await GetMenuAsync();
+
         Menus = GetIconSideMenuItems();
     }
 
@@ -55,25 +50,6 @@ public partial class DefaultLayout
         };
 
         return menus;
-    }
-    private async Task GetMenuAsync()
-    {
-        MenuItem InFunc(ApplicationMenuItem menuItem)
-        {
-            var menu = new MenuItem
-            {
-                Text = menuItem.DisplayName,
-                Icon = menuItem.Icon,
-                Url = menuItem.Url == null ? "#" : menuItem.Url.TrimStart('~'),
-                Target = menuItem.Target,
-            };
-            menu.Items = menuItem.Items.Select(InFunc).ToList();
-
-            return menu;
-        }
-
-        var mainMenu = await MenuManager.GetMainMenuAsync();
-        Menus = mainMenu.Items.Select(InFunc).ToList();
     }
 
     private Task OnSideChanged(bool v)
