@@ -1,0 +1,30 @@
+﻿using Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.Bundling;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Volo.Abp.AspNetCore.Bundling;
+using Volo.Abp.DependencyInjection;
+
+namespace Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme;
+
+public class BlazorServerComponentBundleManager : IComponentBundleManager, ITransientDependency
+{
+    protected IBundleManager BundleManager { get; }
+
+    public BlazorServerComponentBundleManager(IBundleManager bundleManager)
+    {
+        BundleManager = bundleManager;
+    }
+
+    public virtual async Task<IReadOnlyList<string>> GetStyleBundleFilesAsync(string bundleName)
+    {
+        return (await BundleManager.GetStyleBundleFilesAsync(bundleName)).Select(f => f.FileName).ToList();
+    }
+
+    public virtual async Task<IReadOnlyList<string>> GetScriptBundleFilesAsync(string bundleName)
+    {
+        return (await BundleManager.GetScriptBundleFilesAsync(bundleName)).Select(f => f.FileName).ToList();
+    }
+}

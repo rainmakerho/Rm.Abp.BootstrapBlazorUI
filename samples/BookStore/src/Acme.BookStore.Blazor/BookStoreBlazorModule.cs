@@ -82,8 +82,7 @@ namespace Acme.BookStore.Blazor;
      typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpIdentityBlazorServerBootstrapBlazorModule),
     typeof(AbpTenantManagementBlazorServerBootstrapBlazorModule),
-    typeof(AbpSettingManagementBlazorServerBootstrapBlazorModule),
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule)
+    typeof(AbpSettingManagementBlazorServerBootstrapBlazorModule)
    )]
 public class BookStoreBlazorModule : AbpModule
 {

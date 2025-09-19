@@ -10,5 +10,8 @@ namespace Rm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI;
 )]
 public class AbpSettingManagementBlazorServerBootstrapBlazorModule : AbpModule
 {
-    
+    public override void ConfigureServices(ServiceConfigurationContext context)
+    {
+        base.ConfigureServices(context);
+    }
 }
