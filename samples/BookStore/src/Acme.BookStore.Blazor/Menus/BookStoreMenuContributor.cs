@@ -4,10 +4,12 @@ using Acme.BookStore.Permissions;
 using Acme.BookStore.MultiTenancy;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.UI.Navigation;
-using Volo.Abp.SettingManagement.Blazor.Menus;
-using Volo.Abp.TenantManagement.Blazor.Navigation;
-using Volo.Abp.Identity.Blazor;
-
+//using Volo.Abp.SettingManagement.Blazor.Menus;
+//using Volo.Abp.TenantManagement.Blazor.Navigation;
+//using Volo.Abp.Identity.Blazor;
+using Rm.Abp.IdentityManagement.Blazor.BootstrapBlazorUI;
+using Rm.Abp.SettingManagement.Blazor.BootstrapBlazorUI;
+using Rm.Abp.TenantManagement.Blazor.BootstrapBlazorUI;
 namespace Acme.BookStore.Blazor.Menus;
 
 public class BookStoreMenuContributor : IMenuContributor

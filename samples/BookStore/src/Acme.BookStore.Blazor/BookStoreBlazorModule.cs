@@ -4,8 +4,8 @@ using Acme.BookStore.Blazor.Menus;
 using Acme.BookStore.EntityFrameworkCore;
 using Acme.BookStore.Localization;
 using Acme.BookStore.MultiTenancy;
-using Blazorise.Bootstrap5;
-using Blazorise.Icons.FontAwesome;
+//using Blazorise.Bootstrap5;
+//using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Extensions.DependencyInjection;
@@ -18,41 +18,49 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using OpenIddict.Server.AspNetCore;
 using OpenIddict.Validation.AspNetCore;
+using Rm.Abp.Account.Web;
 using Rm.Abp.AspnetCore.Components.Server.BootstrapBlazorTheme.Bundling;
+using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Routing;
+using Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic;
+using Rm.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
+using Rm.Abp.IdentityManagement.Blazor.Server.BootstrapBlazorUI;
+using Rm.Abp.SettingManagement.Blazor.Server.BootstrapBlazorUI;
+using Rm.Abp.TenantManagement.Blazor.Server.BootstrapBlazorUI;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Volo.Abp;
-using Volo.Abp.Account.Web;
+//using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Components.Server;
-using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme;
-using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme.Bundling;
+//using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme;
+//using Volo.Abp.AspNetCore.Components.Server.LeptonXLiteTheme.Bundling;
 using Volo.Abp.AspNetCore.Components.Web;
-using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
+//using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Libs;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite.Bundling;
+//using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite;
+//using Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.FeatureManagement.Blazor.Server;
+//using Volo.Abp.FeatureManagement.Blazor.Server;
 using Volo.Abp.Identity;
-using Volo.Abp.Identity.Blazor.Server;
+//using Volo.Abp.Identity.Blazor.Server;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.Security.Claims;
-using Volo.Abp.SettingManagement.Blazor.Server;
+//using Volo.Abp.SettingManagement.Blazor.Server;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Swashbuckle;
-using Volo.Abp.TenantManagement.Blazor.Server;
+//using Volo.Abp.TenantManagement.Blazor.Server;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+
 
 namespace Acme.BookStore.Blazor;
 
@@ -63,14 +71,19 @@ namespace Acme.BookStore.Blazor;
     typeof(BookStoreHttpApiModule),
     typeof(AbpAutofacModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpIdentityBlazorServerModule),
-    typeof(AbpTenantManagementBlazorServerModule),
-    typeof(AbpAccountWebOpenIddictModule),
-    typeof(AbpAspNetCoreComponentsServerLeptonXLiteThemeModule),
-    typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
+    //typeof(AbpIdentityBlazorServerModule),
+    //typeof(AbpTenantManagementBlazorServerModule),
+    //typeof(AbpAccountWebOpenIddictModule),
+    //typeof(AbpAspNetCoreComponentsServerLeptonXLiteThemeModule),
+    //typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpFeatureManagementBlazorServerModule),
-    typeof(AbpSettingManagementBlazorServerModule)
+     //typeof(AbpFeatureManagementBlazorServerModule),
+     //typeof(AbpSettingManagementBlazorServerModule)
+     typeof(AbpAccountWebOpenIddictModule),
+    typeof(AbpIdentityBlazorServerBootstrapBlazorModule),
+    typeof(AbpTenantManagementBlazorServerBootstrapBlazorModule),
+    typeof(AbpSettingManagementBlazorServerBootstrapBlazorModule),
+    typeof(AbpAspNetCoreMvcUiBasicThemeModule)
    )]
 public class BookStoreBlazorModule : AbpModule
 {
@@ -158,8 +171,8 @@ public class BookStoreBlazorModule : AbpModule
         ConfigureVirtualFileSystem(hostingEnvironment);
         ConfigureSwaggerServices(context.Services);
         ConfigureAutoApiControllers();
-        ConfigureBlazorise(context);
-        ConfigBootstrapBlazor(context);
+        //ConfigureBlazorise(context);
+        //ConfigBootstrapBlazor(context);
         ConfigureRouter(context);
         ConfigureMenu(context);
     }
@@ -194,41 +207,51 @@ public class BookStoreBlazorModule : AbpModule
     {
         Configure<AbpBundlingOptions>(options =>
         {
+            //// MVC UI
+            //options.StyleBundles.Configure(
+            //    LeptonXLiteThemeBundles.Styles.Global,
+            //    bundle =>
+            //    {
+            //        bundle.AddFiles("/global-styles.css");
+            //    }
+            //);
+
+            //options.ScriptBundles.Configure(
+            //    LeptonXLiteThemeBundles.Scripts.Global,
+            //    bundle =>
+            //    {
+            //        bundle.AddFiles("/global-scripts.js");
+            //    }
+            //);
+
+            //// Blazor UI
+            //options.StyleBundles.Configure(
+            //    BlazorLeptonXLiteThemeBundles.Styles.Global,
+            //    bundle =>
+            //    {
+            //        bundle.AddFiles("/global-styles.css");
+            //    }
+            //);
+
             // MVC UI
             options.StyleBundles.Configure(
-                LeptonXLiteThemeBundles.Styles.Global,
+                BasicThemeBundles.Styles.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
                 }
             );
 
-            options.ScriptBundles.Configure(
-                LeptonXLiteThemeBundles.Scripts.Global,
+            //BLAZOR UI
+            options.StyleBundles.Configure(
+                BlazorBootstrapBlazorThemeBundles.Styles.Global,
                 bundle =>
                 {
-                    bundle.AddFiles("/global-scripts.js");
+                    bundle.AddFiles("/blazor-global-styles.css");
+                    //You can remove the following line if you don't use Blazor CSS isolation for components
+                    bundle.AddFiles("/BookStore.BlazorServer.styles.css");
                 }
             );
-
-            // Blazor UI
-            options.StyleBundles.Configure(
-                BlazorLeptonXLiteThemeBundles.Styles.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/global-styles.css");
-                }
-            );
-
-            options.StyleBundles.Configure(
-                 BlazorBootstrapBlazorThemeBundles.Styles.Global,
-                 bundle =>
-                 {
-                     bundle.AddFiles("/blazor-global-styles.css");
-                     //You can remove the following line if you don't use Blazor CSS isolation for components
-                     bundle.AddFiles("/BookStore.BlazorServer.styles.css");
-                 }
-             );
         });
     }
 
@@ -265,12 +288,12 @@ public class BookStoreBlazorModule : AbpModule
     }
 
 
-    private void ConfigureBlazorise(ServiceConfigurationContext context)
-    {
-        context.Services
-            .AddBootstrap5Providers()
-            .AddFontAwesomeIcons();
-    }
+    //private void ConfigureBlazorise(ServiceConfigurationContext context)
+    //{
+    //    context.Services
+    //        .AddBootstrap5Providers()
+    //        .AddFontAwesomeIcons();
+    //}
 
     private void ConfigBootstrapBlazor(ServiceConfigurationContext context)
     {

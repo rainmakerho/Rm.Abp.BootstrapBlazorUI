@@ -1,13 +1,17 @@
-@using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite
-@using Volo.Abp.AspNetCore.Components.Web.Theming.Routing
+@* @using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite *@
+@using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Routing
+@using Rm.Abp.AspnetCore.Components.Web.BootstrapBlazorTheme.Themes.BootstrapBlazorTheme
+@* @using Volo.Abp.AspNetCore.Components.Web.Theming.Routing *@
 @using Microsoft.Extensions.Options
 @inject IOptions<AbpRouterOptions> RouterOptions
+<BootstrapBlazorRoot>
 <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies">
     <Found Context="routeData">
-        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(DefaultLayout)">
             <NotAuthorized>
                 <RedirectToLogin />
             </NotAuthorized>
         </AuthorizeRouteView>
     </Found>
 </Router>
+</BootstrapBlazorRoot>
